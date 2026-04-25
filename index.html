@@ -423,10 +423,456 @@ body::before {
 .float-card-3 { --r: 3deg; }
 .float-card-img {
   height: 110px; border-radius: 10px; margin-bottom: 12px;
-  background: linear-gradient(135deg, #FF5339, #FFA68C);
+  position: relative; overflow: hidden;
 }
-.float-card-2 .float-card-img { background: linear-gradient(135deg, #2E2F7E, #6060C4); }
-.float-card-3 .float-card-img { background: linear-gradient(135deg, #7A8471, #CAFF3C); }
+
+/* ═══════════════════════════════════════
+   SCENE 1 — Jazz Under the Stars
+   Night sky · Spotlights · Musicians · Crowd
+   ═══════════════════════════════════════ */
+.fc-jazz {
+  background: linear-gradient(175deg, #030a1c 0%, #061530 35%, #0d2045 65%, #101830 100%);
+}
+/* Stars */
+.fc-jazz::before {
+  content: ''; position: absolute; inset: 0;
+  background-image:
+    radial-gradient(1px   1px   at  7% 10%, rgba(255,255,255,.95) 0%, transparent 100%),
+    radial-gradient(1px   1px   at 19%  6%, rgba(255,255,255,.75) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 34% 13%, rgba(255,255,255,.9)  0%, transparent 100%),
+    radial-gradient(1px   1px   at 51%  5%, rgba(255,255,255,.8)  0%, transparent 100%),
+    radial-gradient(1px   1px   at 66%  9%, rgba(255,255,255,.85) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 80%  6%, rgba(255,255,255,.9)  0%, transparent 100%),
+    radial-gradient(1px   1px   at 91% 15%, rgba(255,255,255,.7)  0%, transparent 100%),
+    radial-gradient(1px   1px   at 12% 23%, rgba(255,255,255,.55) 0%, transparent 100%),
+    radial-gradient(1px   1px   at 45% 20%, rgba(255,255,255,.65) 0%, transparent 100%),
+    radial-gradient(1px   1px   at 73% 22%, rgba(255,255,255,.7)  0%, transparent 100%),
+    radial-gradient(1px   1px   at 88% 28%, rgba(255,255,255,.5)  0%, transparent 100%),
+    radial-gradient(1px   1px   at 28% 32%, rgba(255,255,255,.4)  0%, transparent 100%),
+    radial-gradient(1px   1px   at 60% 30%, rgba(255,255,255,.45) 0%, transparent 100%);
+}
+/* Stage ambient glow */
+.fc-jazz::after {
+  content: ''; position: absolute;
+  bottom: 37%; left: 50%; transform: translateX(-50%);
+  width: 130px; height: 14px;
+  background: radial-gradient(ellipse, rgba(255,195,55,.35) 0%, transparent 70%);
+  border-radius: 50%;
+}
+/* Spotlight beams */
+.fc-j-spot { position: absolute; bottom: 36%; }
+.fc-j-spot::before {
+  content: ''; position: absolute; bottom: 0;
+  clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
+}
+.fc-j-spot-1 { left: 14%; }
+.fc-j-spot-1::before {
+  width: 40px; height: 48px;
+  background: linear-gradient(to bottom, transparent 0%, rgba(255,200,55,.24) 100%);
+  transform: rotate(-10deg); transform-origin: bottom center;
+}
+.fc-j-spot-2 { left: 46%; }
+.fc-j-spot-2::before {
+  width: 30px; height: 52px;
+  background: linear-gradient(to bottom, transparent 0%, rgba(255,230,100,.2) 100%);
+  transform-origin: bottom center;
+}
+.fc-j-spot-3 { right: 14%; }
+.fc-j-spot-3::before {
+  width: 38px; height: 46px;
+  background: linear-gradient(to bottom, transparent 0%, rgba(180,155,255,.2) 100%);
+  transform: rotate(10deg); transform-origin: bottom center;
+}
+/* Stage platform */
+.fc-j-stage {
+  position: absolute;
+  bottom: 36%; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, transparent, #4a3818 20%, #2e2208 50%, #4a3818 80%, transparent);
+  box-shadow: 0 0 10px rgba(255,190,50,.25);
+}
+/* Musician silhouettes */
+.fc-j-sil {
+  position: absolute; bottom: calc(36% + 2px);
+  background: #01040d; border-radius: 2px 2px 0 0;
+}
+.fc-j-sil::before {
+  content: ''; position: absolute;
+  bottom: 100%; left: 50%; transform: translateX(-50%);
+  border-radius: 50%; background: #01040d;
+}
+/* Pianist */
+.fc-j-sil-1 { left: calc(25% - 4px); width: 8px; height: 18px; }
+.fc-j-sil-1::before { width: 6px; height: 6px; }
+/* Bassist */
+.fc-j-sil-2 { left: calc(50% - 4px); width: 7px; height: 22px; }
+.fc-j-sil-2::before { width: 5px; height: 5px; }
+.fc-j-sil-2::after {
+  content: ''; position: absolute;
+  top: -2px; right: -8px;
+  width: 1px; height: 28px;
+  background: #01040d; transform: rotate(5deg); transform-origin: bottom;
+}
+/* Trumpet */
+.fc-j-sil-3 { right: calc(25% - 4px); width: 8px; height: 20px; }
+.fc-j-sil-3::before { width: 5px; height: 5px; }
+.fc-j-sil-3::after {
+  content: ''; position: absolute;
+  top: 5px; left: 100%;
+  width: 11px; height: 2px;
+  background: #01040d; border-radius: 0 1px 1px 0;
+}
+/* Trees flanking stage */
+.fc-j-tree {
+  position: absolute;
+  bottom: 36%;
+}
+.fc-j-tree::before, .fc-j-tree::after { content: ''; position: absolute; background: #01040d; }
+.fc-j-tree-l { left: 0; }
+.fc-j-tree-l::before { bottom: 0; left: 4px; width: 5px; height: 22px; }
+.fc-j-tree-l::after {
+  bottom: 18px; left: -6px;
+  width: 22px; height: 28px;
+  background: radial-gradient(ellipse, #01040d 0%, #01040d 100%);
+  border-radius: 50% 50% 40% 40%;
+}
+.fc-j-tree-r { right: 0; }
+.fc-j-tree-r::before { bottom: 0; right: 4px; width: 5px; height: 18px; }
+.fc-j-tree-r::after {
+  bottom: 14px; right: -5px;
+  width: 18px; height: 22px;
+  border-radius: 50% 50% 40% 40%;
+}
+/* Crowd silhouette */
+.fc-j-crowd {
+  position: absolute;
+  bottom: 0; left: 0; right: 0; height: 36%;
+  background: #01040d;
+  border-radius: 50% 50% 0 0 / 8px 8px 0 0;
+}
+.fc-j-crowd::before {
+  content: ''; position: absolute;
+  top: -7px; left: 0; right: 0; height: 8px;
+  background:
+    radial-gradient(ellipse 9px 7px at  5% 0%, #01040d 49%, transparent 50%),
+    radial-gradient(ellipse 9px 7px at 13% 0%, #01040d 49%, transparent 50%),
+    radial-gradient(ellipse 9px 7px at 21% 0%, #01040d 49%, transparent 50%),
+    radial-gradient(ellipse 9px 7px at 30% 0%, #01040d 49%, transparent 50%),
+    radial-gradient(ellipse 9px 7px at 38% 0%, #01040d 49%, transparent 50%),
+    radial-gradient(ellipse 9px 7px at 47% 0%, #01040d 49%, transparent 50%),
+    radial-gradient(ellipse 9px 7px at 55% 0%, #01040d 49%, transparent 50%),
+    radial-gradient(ellipse 9px 7px at 64% 0%, #01040d 49%, transparent 50%),
+    radial-gradient(ellipse 9px 7px at 72% 0%, #01040d 49%, transparent 50%),
+    radial-gradient(ellipse 9px 7px at 81% 0%, #01040d 49%, transparent 50%),
+    radial-gradient(ellipse 9px 7px at 90% 0%, #01040d 49%, transparent 50%),
+    radial-gradient(ellipse 9px 7px at 99% 0%, #01040d 49%, transparent 50%);
+}
+
+/* ═══════════════════════════════════════
+   SCENE 2 — Street Food Festival (Urban)
+   City skyline · Food trucks · Bunting · Crowd
+   ═══════════════════════════════════════ */
+.fc-food {
+  background: linear-gradient(175deg,
+    #1c3a5e 0%,
+    #2e5a80 18%,
+    #b87218 58%,
+    #8a4e08 80%,
+    #5a2e04 100%
+  );
+}
+/* Sky: sun halo + warm atmosphere */
+.fc-food::before {
+  content: ''; position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 110px 32px at 62% 60%, rgba(255,220,80,.28) 0%, transparent 100%),
+    radial-gradient(ellipse 50px 18px at 25% 68%, rgba(255,180,50,.1)  0%, transparent 100%);
+}
+/* City skyline */
+.fc-f-skyline {
+  position: absolute;
+  bottom: 38%; left: 0; right: 0; height: 32px;
+  background:
+    linear-gradient(#0a1828,#0a1828)  1% bottom / 14px 32px no-repeat,
+    linear-gradient(#0a1828,#0a1828) 12% bottom / 18px 20px no-repeat,
+    linear-gradient(#0a1828,#0a1828) 27% bottom / 13px 28px no-repeat,
+    linear-gradient(#0a1828,#0a1828) 43% bottom / 22px 16px no-repeat,
+    linear-gradient(#0a1828,#0a1828) 58% bottom / 16px 26px no-repeat,
+    linear-gradient(#0a1828,#0a1828) 73% bottom / 20px 22px no-repeat,
+    linear-gradient(#0a1828,#0a1828) 88% bottom / 14px 30px no-repeat;
+}
+/* Lit windows on buildings */
+.fc-f-skyline::before {
+  content: ''; position: absolute; inset: 0;
+  background:
+    radial-gradient(1px 1px at  3% 22%, rgba(255,230,100,.7) 0%, transparent 100%),
+    radial-gradient(1px 1px at  8% 58%, rgba(255,230,100,.55) 0%, transparent 100%),
+    radial-gradient(1px 1px at 16% 52%, rgba(255,230,100,.65) 0%, transparent 100%),
+    radial-gradient(1px 1px at 31% 20%, rgba(255,230,100,.7) 0%, transparent 100%),
+    radial-gradient(1px 1px at 36% 55%, rgba(255,230,100,.5) 0%, transparent 100%),
+    radial-gradient(1px 1px at 48% 42%, rgba(255,230,100,.6) 0%, transparent 100%),
+    radial-gradient(1px 1px at 63% 16%, rgba(255,230,100,.65) 0%, transparent 100%),
+    radial-gradient(1px 1px at 68% 50%, rgba(255,230,100,.5) 0%, transparent 100%),
+    radial-gradient(1px 1px at 78% 32%, rgba(255,230,100,.6) 0%, transparent 100%),
+    radial-gradient(1px 1px at 83% 62%, rgba(255,230,100,.55) 0%, transparent 100%),
+    radial-gradient(1px 1px at 92% 25%, rgba(255,230,100,.7) 0%, transparent 100%);
+}
+/* Ground / street */
+.fc-f-ground {
+  position: absolute;
+  bottom: 0; left: 0; right: 0; height: 38%;
+  background: linear-gradient(to bottom, #1a1008, #0e0804);
+}
+.fc-f-ground::before {
+  content: ''; position: absolute;
+  top: 0; left: 0; right: 0; height: 1.5px;
+  background: rgba(255,200,80,.12);
+}
+/* Bunting string */
+.fc-f-bunting {
+  position: absolute;
+  top: 20%; left: 0; right: 0; height: 1px;
+  background: rgba(255,255,255,.22);
+}
+/* Colorful bunting flags */
+.fc-f-bunting::before {
+  content: ''; position: absolute;
+  top: 0; left: 0; height: 8px; width: 100%;
+  background:
+    linear-gradient(135deg, rgba(220,30,30,.9) 5px, transparent 5px)    0px   0px / 12px 8px,
+    linear-gradient(225deg, rgba(220,30,30,.9) 5px, transparent 5px)    6px   0px / 12px 8px,
+    linear-gradient(135deg, rgba(255,200,0,.85) 5px, transparent 5px)  14px   0px / 12px 8px,
+    linear-gradient(225deg, rgba(255,200,0,.85) 5px, transparent 5px)  20px   0px / 12px 8px,
+    linear-gradient(135deg, rgba(30,100,200,.7) 5px, transparent 5px)  28px   0px / 12px 8px,
+    linear-gradient(225deg, rgba(30,100,200,.7) 5px, transparent 5px)  34px   0px / 12px 8px,
+    linear-gradient(135deg, rgba(200,30,100,.8) 5px, transparent 5px)  42px   0px / 12px 8px,
+    linear-gradient(225deg, rgba(200,30,100,.8) 5px, transparent 5px)  48px   0px / 12px 8px,
+    linear-gradient(135deg, rgba(30,160,60,.7) 5px, transparent 5px)   56px   0px / 12px 8px,
+    linear-gradient(225deg, rgba(30,160,60,.7) 5px, transparent 5px)   62px   0px / 12px 8px,
+    linear-gradient(135deg, rgba(220,30,30,.9) 5px, transparent 5px)   70px   0px / 12px 8px,
+    linear-gradient(225deg, rgba(220,30,30,.9) 5px, transparent 5px)   76px   0px / 12px 8px,
+    linear-gradient(135deg, rgba(255,200,0,.85) 5px, transparent 5px)  84px   0px / 12px 8px,
+    linear-gradient(225deg, rgba(255,200,0,.85) 5px, transparent 5px)  90px   0px / 12px 8px,
+    linear-gradient(135deg, rgba(30,100,200,.7) 5px, transparent 5px)  98px   0px / 12px 8px,
+    linear-gradient(225deg, rgba(30,100,200,.7) 5px, transparent 5px) 104px   0px / 12px 8px,
+    linear-gradient(135deg, rgba(200,30,100,.8) 5px, transparent 5px) 112px   0px / 12px 8px,
+    linear-gradient(225deg, rgba(200,30,100,.8) 5px, transparent 5px) 118px   0px / 12px 8px,
+    linear-gradient(135deg, rgba(30,160,60,.7) 5px, transparent 5px)  126px   0px / 12px 8px,
+    linear-gradient(225deg, rgba(30,160,60,.7) 5px, transparent 5px)  132px   0px / 12px 8px,
+    linear-gradient(135deg, rgba(220,30,30,.9) 5px, transparent 5px)  140px   0px / 12px 8px,
+    linear-gradient(225deg, rgba(220,30,30,.9) 5px, transparent 5px)  146px   0px / 12px 8px,
+    linear-gradient(135deg, rgba(255,200,0,.85) 5px, transparent 5px) 154px   0px / 12px 8px,
+    linear-gradient(225deg, rgba(255,200,0,.85) 5px, transparent 5px) 160px   0px / 12px 8px,
+    linear-gradient(135deg, rgba(30,100,200,.7) 5px, transparent 5px) 168px   0px / 12px 8px,
+    linear-gradient(225deg, rgba(30,100,200,.7) 5px, transparent 5px) 174px   0px / 12px 8px,
+    linear-gradient(135deg, rgba(200,30,100,.8) 5px, transparent 5px) 182px   0px / 12px 8px,
+    linear-gradient(225deg, rgba(200,30,100,.8) 5px, transparent 5px) 188px   0px / 12px 8px,
+    linear-gradient(135deg, rgba(30,160,60,.7) 5px, transparent 5px)  196px   0px / 12px 8px,
+    linear-gradient(225deg, rgba(30,160,60,.7) 5px, transparent 5px)  202px   0px / 12px 8px;
+  background-repeat: no-repeat;
+}
+/* Food truck bodies */
+.fc-f-truck {
+  position: absolute;
+  bottom: 38%;
+  background: #0a1828;
+  border-radius: 2px 2px 0 0;
+}
+/* Wheels via box-shadow */
+.fc-f-truck::after {
+  content: ''; position: absolute;
+  bottom: -5px;
+  width: 8px; height: 8px;
+  background: #0a1828; border-radius: 50%;
+}
+.fc-f-truck-1 { left: 2%; width: 60px; height: 24px; }
+.fc-f-truck-1::after { left: 9px; box-shadow: 38px 0 0 0 #0a1828; }
+.fc-f-truck-2 { left: 43%; width: 52px; height: 22px; }
+.fc-f-truck-2::after { left: 8px; box-shadow: 32px 0 0 0 #0a1828; }
+/* Service windows */
+.fc-f-win {
+  position: absolute;
+  background: rgba(255,200,50,.18);
+  border: 1px solid rgba(255,200,50,.3);
+  border-radius: 1px;
+}
+.fc-f-win-1 { bottom: calc(38% + 8px);  left: calc(2%  + 14px); width: 16px; height: 12px; }
+.fc-f-win-2 { bottom: calc(38% + 7px);  left: calc(43% + 12px); width: 14px; height: 10px; }
+/* Truck awnings */
+.fc-f-awn {
+  position: absolute;
+  background: #0a1828; height: 5px;
+}
+.fc-f-awn-1 { bottom: calc(38% + 24px); left: calc(2%  - 2px); width: 64px; }
+.fc-f-awn-2 { bottom: calc(38% + 22px); left: calc(43% - 2px); width: 56px; }
+/* Food stand (right) */
+.fc-f-stand {
+  position: absolute;
+  bottom: 38%; right: 3%;
+  width: 34px; height: 14px;
+  background: #0a1828; border-radius: 1px;
+}
+.fc-f-stand::before {
+  content: ''; position: absolute;
+  bottom: 100%; left: -3px; right: -3px; height: 4px;
+  background: #0a1828; border-radius: 1px 1px 0 0;
+}
+.fc-f-stand::after {
+  content: ''; position: absolute;
+  top: 100%; left: 5px;
+  width: 2px; height: 8px;
+  background: #0a1828;
+  box-shadow: 20px 0 0 0 #0a1828;
+}
+/* Steam wisps */
+.fc-f-steam {
+  position: absolute; bottom: 38%;
+  width: 3px; background: rgba(255,255,255,.12); border-radius: 2px;
+  animation: fc-steam 2.5s ease-in-out infinite;
+}
+.fc-f-steam-1 { left: 18%; height: 14px; animation-delay: 0.4s; }
+.fc-f-steam-2 { left: 54%; height: 10px; animation-delay: 1.2s; }
+@keyframes fc-steam {
+  0%   { transform: translateY(0) scaleX(1); opacity: .12; }
+  50%  { transform: translateY(-9px) scaleX(1.6); opacity: .18; }
+  100% { transform: translateY(-18px) scaleX(.4); opacity: 0; }
+}
+/* Crowd heads foreground */
+.fc-f-crowd {
+  position: absolute;
+  bottom: 0; left: 0; right: 0; height: 20%;
+  background: #0a0602;
+}
+.fc-f-crowd::before {
+  content: ''; position: absolute;
+  top: -9px; left: 0; right: 0; height: 10px;
+  background:
+    radial-gradient(ellipse 12px 9px at  5% 0%, #0a0602 49%, transparent 50%),
+    radial-gradient(ellipse 11px 8px at 14% 0%, #0a0602 49%, transparent 50%),
+    radial-gradient(ellipse 13px 9px at 24% 0%, #0a0602 49%, transparent 50%),
+    radial-gradient(ellipse 10px 8px at 33% 0%, #0a0602 49%, transparent 50%),
+    radial-gradient(ellipse 12px 9px at 43% 0%, #0a0602 49%, transparent 50%),
+    radial-gradient(ellipse 11px 8px at 53% 0%, #0a0602 49%, transparent 50%),
+    radial-gradient(ellipse 13px 9px at 62% 0%, #0a0602 49%, transparent 50%),
+    radial-gradient(ellipse 10px 8px at 72% 0%, #0a0602 49%, transparent 50%),
+    radial-gradient(ellipse 12px 9px at 82% 0%, #0a0602 49%, transparent 50%),
+    radial-gradient(ellipse 11px 8px at 92% 0%, #0a0602 49%, transparent 50%);
+}
+
+/* ═══════════════════════════════════════
+   SCENE 3 — Sunset Kayak Tour
+   Burning sky · Glowing sun · Dark water · Kayaks
+   ═══════════════════════════════════════ */
+.fc-kayak {
+  background: linear-gradient(175deg,
+    #ff7730 0%, #f56010 22%,
+    #d94800 48%, #b83200 72%,
+    #7a1800 100%);
+}
+/* Atmospheric haze */
+.fc-kayak::before {
+  content: ''; position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 100px 38px at 50% 22%, rgba(255,240,80,.14) 0%, transparent 100%),
+    radial-gradient(ellipse 50px  20px at 18% 18%, rgba(255,200,80,.08) 0%, transparent 100%),
+    radial-gradient(ellipse 45px  18px at 82% 14%, rgba(255,210,80,.08) 0%, transparent 100%);
+}
+/* Sun orb */
+.fc-k-sun {
+  position: absolute;
+  bottom: 42%; left: 50%; transform: translateX(-50%);
+  width: 20px; height: 20px; border-radius: 50%;
+  background: radial-gradient(circle, #fff8e0 0%, #ffe050 40%, #ffaa00 70%, transparent 100%);
+  box-shadow: 0 0 10px 5px rgba(255,210,40,.45), 0 0 28px 10px rgba(255,140,0,.2);
+}
+/* Water body */
+.fc-k-water {
+  position: absolute;
+  bottom: 0; left: 0; right: 0; height: 42%;
+  background: linear-gradient(to bottom, #0c1f35 0%, #071420 50%, #03090f 100%);
+}
+/* Sun reflection column */
+.fc-k-water::before {
+  content: ''; position: absolute;
+  top: 0; left: 50%; transform: translateX(-50%);
+  width: 8px; height: 40%;
+  background: linear-gradient(to bottom, rgba(255,200,40,.4) 0%, rgba(255,130,20,.15) 60%, transparent 100%);
+  border-radius: 0 0 3px 3px;
+}
+/* Water shimmer line */
+.fc-k-water::after {
+  content: ''; position: absolute;
+  top: 7px; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent 8%, rgba(255,140,30,.22) 28%, rgba(255,190,60,.38) 50%, rgba(255,140,30,.22) 72%, transparent 92%);
+}
+/* Second shimmer line */
+.fc-k-shimmer {
+  position: absolute;
+  bottom: calc(42% - 18px); left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent 15%, rgba(255,120,20,.14) 35%, rgba(255,160,40,.2) 50%, rgba(255,120,20,.14) 65%, transparent 85%);
+}
+/* Mountain / tree silhouette */
+.fc-k-mtn {
+  position: absolute;
+  bottom: 42%; left: 0; right: 0; height: 18px;
+  background:
+    radial-gradient(ellipse 55px 18px at 16% 100%, #07111e 49%, transparent 50%),
+    radial-gradient(ellipse 65px 15px at 78% 100%, #07111e 49%, transparent 50%),
+    radial-gradient(ellipse 22px 10px at  4% 100%, #07111e 49%, transparent 50%),
+    radial-gradient(ellipse 28px 13px at 96% 100%, #07111e 49%, transparent 50%),
+    radial-gradient(ellipse 20px  8px at 38% 100%, #07111e 49%, transparent 50%),
+    radial-gradient(ellipse 18px  9px at 58% 100%, #07111e 49%, transparent 50%);
+}
+/* Kayak hulls — prominent boat shapes */
+.fc-k-kayak {
+  position: absolute;
+  bottom: calc(42% + 2px);
+  height: 8px;
+  border-radius: 50%;
+  background: #07111e;
+  box-shadow: 0 2px 6px rgba(0,0,0,.5);
+}
+/* Kayak 1 — lead, foreground, large */
+.fc-k-kayak-1 { left: 15%; width: 58px; }
+/* Kayak 2 — behind, slightly smaller */
+.fc-k-kayak-2 { left: 57%; width: 46px; bottom: calc(42% + 1px); }
+/* Paddle blades on each kayak */
+.fc-k-kayak::before, .fc-k-kayak::after {
+  content: ''; position: absolute;
+  background: #07111e; border-radius: 2px;
+  width: 3px; height: 14px;
+  top: -12px;
+}
+.fc-k-kayak-1::before { left: 16px;  transform: rotate(-24deg); transform-origin: bottom center; }
+.fc-k-kayak-1::after  { right: 16px; transform: rotate(24deg);  transform-origin: bottom center; }
+.fc-k-kayak-2::before { left: 12px;  transform: rotate(-20deg); transform-origin: bottom center; width: 2px; height: 12px; top: -10px; }
+.fc-k-kayak-2::after  { right: 12px; transform: rotate(20deg);  transform-origin: bottom center; width: 2px; height: 12px; top: -10px; }
+/* Paddler on kayak 1 */
+.fc-k-kayak-1 .fc-k-paddler {
+  position: absolute;
+  bottom: 65%; left: 50%; transform: translateX(-50%);
+  width: 6px; height: 9px;
+  background: #07111e; border-radius: 3px 3px 0 0;
+}
+.fc-k-kayak-1 .fc-k-paddler::before {
+  content: ''; position: absolute;
+  bottom: 100%; left: 50%; transform: translateX(-50%);
+  width: 5px; height: 5px;
+  background: #07111e; border-radius: 50%;
+}
+/* Paddler on kayak 2 */
+.fc-k-kayak-2 .fc-k-paddler {
+  position: absolute;
+  bottom: 65%; left: 50%; transform: translateX(-50%);
+  width: 5px; height: 7px;
+  background: #07111e; border-radius: 2px 2px 0 0;
+}
+.fc-k-kayak-2 .fc-k-paddler::before {
+  content: ''; position: absolute;
+  bottom: 100%; left: 50%; transform: translateX(-50%);
+  width: 4px; height: 4px;
+  background: #07111e; border-radius: 50%;
+}
+
 .float-card-cat {
   font-family: var(--mono); font-size: 10px; text-transform: uppercase;
   letter-spacing: 1.5px; color: var(--ember); margin-bottom: 4px;
@@ -1627,20 +2073,56 @@ footer {
 
   <div class="floating-cards">
     <div class="float-card float-card-1">
-      <div class="float-card-img"></div>
+      <div class="float-card-img fc-jazz">
+        <div class="fc-j-spot fc-j-spot-1"></div>
+        <div class="fc-j-spot fc-j-spot-2"></div>
+        <div class="fc-j-spot fc-j-spot-3"></div>
+        <div class="fc-j-stage"></div>
+        <div class="fc-j-sil fc-j-sil-1"></div>
+        <div class="fc-j-sil fc-j-sil-2"></div>
+        <div class="fc-j-sil fc-j-sil-3"></div>
+        <div class="fc-j-tree fc-j-tree-l"></div>
+        <div class="fc-j-tree fc-j-tree-r"></div>
+        <div class="fc-j-crowd"></div>
+      </div>
       <div class="float-card-cat">Live Music</div>
       <div class="float-card-title">Jazz Under the Stars</div>
       <div class="float-card-meta">Sat · Central Park</div>
       <div class="float-card-badge">🔥 3 friends interested</div>
     </div>
     <div class="float-card float-card-2">
-      <div class="float-card-img"></div>
+      <div class="float-card-img fc-food">
+        <div class="fc-f-skyline"></div>
+        <div class="fc-f-bunting"></div>
+        <div class="fc-f-truck fc-f-truck-1"></div>
+        <div class="fc-f-win  fc-f-win-1"></div>
+        <div class="fc-f-awn  fc-f-awn-1"></div>
+        <div class="fc-f-truck fc-f-truck-2"></div>
+        <div class="fc-f-win  fc-f-win-2"></div>
+        <div class="fc-f-awn  fc-f-awn-2"></div>
+        <div class="fc-f-stand"></div>
+        <div class="fc-f-steam fc-f-steam-1"></div>
+        <div class="fc-f-steam fc-f-steam-2"></div>
+        <div class="fc-f-ground"></div>
+        <div class="fc-f-crowd"></div>
+      </div>
       <div class="float-card-cat">Food &amp; Drink</div>
       <div class="float-card-title">Street Food Festival</div>
       <div class="float-card-meta">Sun · Brooklyn Bridge Park</div>
     </div>
     <div class="float-card float-card-3">
-      <div class="float-card-img"></div>
+      <div class="float-card-img fc-kayak">
+        <div class="fc-k-sun"></div>
+        <div class="fc-k-water"></div>
+        <div class="fc-k-shimmer"></div>
+        <div class="fc-k-mtn"></div>
+        <div class="fc-k-kayak fc-k-kayak-1">
+          <div class="fc-k-paddler"></div>
+        </div>
+        <div class="fc-k-kayak fc-k-kayak-2">
+          <div class="fc-k-paddler"></div>
+        </div>
+      </div>
       <div class="float-card-cat">Outdoors</div>
       <div class="float-card-title">Sunset Kayak Tour</div>
       <div class="float-card-meta">Sat · Hudson River</div>
@@ -1663,7 +2145,7 @@ footer {
     <h2 class="section-title reveal">You're more connected than ever.<br/>And somehow, <em>lonelier.</em></h2>
     <p class="section-intro reveal">We spend hours watching everyone else's lives. Events come and go. Friends drift apart. The nights you really wanted? You saw them scroll by.</p>
     <div class="stat-grid reveal">
-      <div><div class="stat-number">4hr 37min</div><div class="stat-label">Average daily screen time in the US — most of it alone</div></div>
+      <div><div class="stat-number">4.5 hrs</div><div class="stat-label">Average daily screen time in the US — most of it alone</div></div>
       <div><div class="stat-number">15</div><div class="stat-label">Text threads required to coordinate a single group outing</div></div>
       <div><div class="stat-number">82%</div><div class="stat-label">of young adults say they'd attend more events if a friend went with them</div></div>
     </div>
