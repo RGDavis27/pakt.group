@@ -1,10 +1,11 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>pakt — Make the pakt. Show up. Live it.</title>
-<meta name="description" content="Stop scrolling. Start showing up. pakt is the social discovery app that turns 'I kind of want to go' into 'we're going together.'" />
+<meta name="description" content="pakt is coming soon to NYC, LA, and Chicago. Join the beta waitlist and be first in the room when we launch." />
 <meta property="og:title" content="pakt — Make the pakt. Show up. Live it." />
 <meta property="og:description" content="The social discovery app for people who are tired of experiencing things alone." />
 <meta property="og:url" content="https://pakt.group" />
@@ -1365,6 +1366,155 @@ footer {
 }
 @media (min-width: 900px) and (hover: hover) { .cursor-glow { display: block; } }
 
+/* ─── Waitlist section ───────────────────────────────────────────────── */
+.wl-wrap {
+  max-width: var(--max);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+@media (max-width: 900px) {
+  .wl-wrap { grid-template-columns: 1fr; gap: 48px; }
+}
+
+/* Left column */
+.wl-perks {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 32px;
+}
+.wl-perk {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 15px;
+  color: rgba(245,239,228,0.85);
+}
+.wl-perk-icon { font-size: 18px; flex-shrink: 0; }
+
+/* Right column — the card */
+.wl-card {
+  background: var(--bone);
+  border-radius: 24px;
+  padding: 40px;
+  box-shadow: 0 40px 80px rgba(14,14,15,0.3);
+}
+@media (max-width: 480px) {
+  .wl-card { padding: 28px 20px; border-radius: 20px; }
+}
+.wl-card-title {
+  font-family: var(--display);
+  font-size: 26px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+.wl-card-sub {
+  font-size: 14px;
+  color: var(--text-mute);
+  margin-bottom: 28px;
+}
+
+/* Form fields */
+.wl-form { display: flex; flex-direction: column; gap: 16px; }
+.wl-field { display: flex; flex-direction: column; gap: 6px; }
+.wl-label {
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--text-dim);
+  font-weight: 500;
+}
+.wl-input {
+  width: 100%;
+  padding: 13px 16px;
+  border: 1.5px solid var(--rule);
+  border-radius: 10px;
+  font-family: var(--body);
+  font-size: 15px;
+  color: var(--ink);
+  background: var(--cream);
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  -webkit-appearance: none;
+}
+.wl-input::placeholder { color: var(--text-mute); }
+.wl-input:focus {
+  border-color: var(--ember);
+  box-shadow: 0 0 0 3px rgba(255,83,57,0.12);
+  background: #fff;
+}
+.wl-select { appearance: none; cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237A7A7B' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; }
+.wl-select option { background: white; color: var(--ink); }
+
+/* Submit button */
+.wl-btn {
+  width: 100%;
+  padding: 16px 24px;
+  background: var(--ember);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-family: var(--body);
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 4px;
+  transition: all 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+.wl-btn:hover { background: #e84028; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255,83,57,0.4); }
+@media (hover: none) { .wl-btn:hover { transform: none; box-shadow: none; } }
+.wl-btn:active { transform: scale(0.98); opacity: 0.9; }
+.wl-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+/* Success state */
+.wl-success {
+  display: none;
+  text-align: center;
+  padding: 16px 0;
+}
+.wl-success.visible { display: block; }
+.wl-success-icon { font-size: 48px; margin-bottom: 14px; }
+.wl-success-title {
+  font-family: var(--display);
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+.wl-success-sub { font-size: 14px; color: var(--text-dim); line-height: 1.6; margin-bottom: 24px; }
+.wl-share-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border: 1.5px solid var(--rule);
+  border-radius: 999px;
+  font-family: var(--body);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink);
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.2s;
+  -webkit-tap-highlight-color: transparent;
+}
+.wl-share-btn:hover { border-color: var(--ember); color: var(--ember); }
+.wl-share-btn:active { transform: scale(0.97); }
+
 /* ─── Legal pages ────────────────────────────────────────────────────── */
 .legal-page {
   max-width: var(--max);
@@ -1443,7 +1593,7 @@ footer {
     <a href="#how">How it works</a>
     <a href="#features">Features</a>
     <a href="#stories">Stories</a>
-    <a href="#download" class="nav-cta">Get the app</a>
+    <a href="#waitlist" class="nav-cta">Join waitlist</a>
   </div>
   <button class="nav-burger" id="navBurger" aria-label="Open menu" aria-expanded="false">
     <span></span><span></span><span></span>
@@ -1455,7 +1605,7 @@ footer {
   <a href="#how" class="drawer-link">How it works</a>
   <a href="#features" class="drawer-link">Features</a>
   <a href="#stories" class="drawer-link">Stories</a>
-  <a href="#download" class="drawer-link drawer-cta">Get the app →</a>
+  <a href="#waitlist" class="drawer-link drawer-cta">Join waitlist →</a>
 </div>
 <div class="nav-overlay" id="navOverlay"></div>
 
@@ -1463,14 +1613,14 @@ footer {
 <section class="hero">
   <div class="hero-grid"></div>
   <div class="wrap" style="position:relative;z-index:2;">
-    <div class="hero-eyebrow">Launching Q4 · NYC · LA · Chicago</div>
+    <div class="hero-eyebrow">Coming Soon · NYC · LA · Chicago</div>
     <h1 class="hero-title">
       <span class="line">Stop <em>scrolling.</em></span>
       <span class="line">Start <span class="underline">showing up.</span></span>
     </h1>
     <p class="hero-sub">pakt is the social app that turns "I kind of want to go to that" into "we're going together." Discover events worth showing up for — with the people worth showing up with.</p>
     <div class="hero-actions">
-      <a href="#download" class="btn btn-primary">Get the app <svg class="btn-icon" viewBox="0 0 24 24" fill="none"><path d="M5 12h14m-7-7 7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <a href="#waitlist" class="btn btn-primary">Join the waitlist <svg class="btn-icon" viewBox="0 0 24 24" fill="none"><path d="M5 12h14m-7-7 7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
       <a href="#how" class="btn btn-secondary">See how it works</a>
     </div>
   </div>
@@ -1697,19 +1847,63 @@ footer {
   </div>
 </section>
 
-<!-- CTA -->
-<section class="cta" id="download">
-  <h2 class="cta-title">Make the pakt.<br/><em>Show up.</em><br/>Live it.</h2>
-  <p class="cta-sub">Free on iPhone and Android. No ads. No selling your data. Just better nights.</p>
-  <div class="cta-buttons">
-    <a href="#" class="store-btn">
-      <span class="store-btn-icon">🍎</span>
-      <span class="store-btn-text"><span class="store-btn-top">Download on the</span><span class="store-btn-main">App Store</span></span>
-    </a>
-    <a href="#" class="store-btn">
-      <span class="store-btn-icon">▶</span>
-      <span class="store-btn-text"><span class="store-btn-top">Get it on</span><span class="store-btn-main">Google Play</span></span>
-    </a>
+<!-- WAITLIST -->
+<section class="cta" id="waitlist">
+  <div class="wl-wrap">
+
+    <div class="wl-left">
+      <div class="section-label" style="color:rgba(245,239,228,0.55);margin-bottom:20px;">Early access</div>
+      <h2 class="cta-title">Be first<br/>in the<br/><em>room.</em></h2>
+      <p class="cta-sub">pakt is coming soon to NYC, LA, and Chicago. Sign up for beta access and we'll let you in before anyone else — plus a founding member badge on your profile.</p>
+      <div class="wl-perks">
+        <div class="wl-perk"><span class="wl-perk-icon">🚀</span><span>Priority beta access in your city</span></div>
+        <div class="wl-perk"><span class="wl-perk-icon">🎖️</span><span>Exclusive founding member badge</span></div>
+        <div class="wl-perk"><span class="wl-perk-icon">🔒</span><span>No spam — ever. Just your launch invite.</span></div>
+      </div>
+    </div>
+
+    <div class="wl-right">
+      <div class="wl-card">
+        <h3 class="wl-card-title">Join the waitlist</h3>
+        <p class="wl-card-sub">Be the first to experience pakt.</p>
+
+        <!-- Replace YOUR_FORM_ID with your Formspree form ID -->
+        <!-- Get one free at formspree.io → New Form → copy the ID -->
+        <form class="wl-form" id="wlForm" action="https://formspree.io/f/xjgjzynr" method="POST">
+          <input type="hidden" name="_subject" value="New pakt waitlist signup" />
+          <div class="wl-field">
+            <label class="wl-label">Your name</label>
+            <input type="text" name="name" placeholder="Jane Smith" required class="wl-input" autocomplete="given-name" />
+          </div>
+          <div class="wl-field">
+            <label class="wl-label">Email address</label>
+            <input type="email" name="email" placeholder="jane@example.com" required class="wl-input" autocomplete="email" />
+          </div>
+          <div class="wl-field">
+            <label class="wl-label">Your city</label>
+            <select name="city" required class="wl-input wl-select">
+              <option value="" disabled selected>Select your city</option>
+              <option value="New York City">New York City</option>
+              <option value="Los Angeles">Los Angeles</option>
+              <option value="Chicago">Chicago</option>
+              <option value="Other">Other — notify me when you expand</option>
+            </select>
+          </div>
+          <button type="submit" class="wl-btn" id="wlBtn">
+            Make the pakt
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14m-7-7 7 7-7 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </form>
+
+        <div class="wl-success" id="wlSuccess">
+          <div class="wl-success-icon">🎉</div>
+          <h3 class="wl-success-title">You're on the list.</h3>
+          <p class="wl-success-sub">We'll send your beta invite before we open to the public. In the meantime, tell your crew.</p>
+          <button class="wl-share-btn" id="wlShare">Share pakt →</button>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -1725,7 +1919,7 @@ footer {
       <ul>
         <li><a href="#how">How it works</a></li>
         <li><a href="#features">Features</a></li>
-        <li><a href="#download">Download</a></li>
+        <li><a href="#waitlist">Join waitlist</a></li>
         <li><a href="#">Roadmap</a></li>
       </ul>
     </div>
@@ -1868,6 +2062,63 @@ footer {
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') closeDrawer();
   });
+
+  // ── Waitlist form ─────────────────────────────────────────────────────
+  const wlForm    = document.getElementById('wlForm');
+  const wlSuccess = document.getElementById('wlSuccess');
+  const wlBtn     = document.getElementById('wlBtn');
+  const wlShare   = document.getElementById('wlShare');
+
+  if (wlForm) {
+    wlForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const originalText = wlBtn.innerHTML;
+      wlBtn.innerHTML = 'Joining the waitlist…';
+      wlBtn.disabled = true;
+
+      try {
+        const res = await fetch(wlForm.action, {
+          method: 'POST',
+          body: new FormData(wlForm),
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (res.ok) {
+          wlForm.style.display = 'none';
+          wlSuccess.classList.add('visible');
+          // Scroll the card into view smoothly
+          wlSuccess.closest('.wl-card').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        } else {
+          wlBtn.innerHTML = 'Something went wrong — try again';
+          wlBtn.disabled = false;
+          setTimeout(() => {
+            wlBtn.innerHTML = originalText;
+          }, 3000);
+        }
+      } catch {
+        wlBtn.innerHTML = 'Something went wrong — try again';
+        wlBtn.disabled = false;
+        setTimeout(() => { wlBtn.innerHTML = originalText; }, 3000);
+      }
+    });
+  }
+
+  if (wlShare) {
+    wlShare.addEventListener('click', () => {
+      if (navigator.share) {
+        navigator.share({
+          title: 'pakt — Make the pakt. Show up. Live it.',
+          text: 'I just joined the pakt beta waitlist. Come on.',
+          url: window.location.href
+        });
+      } else {
+        navigator.clipboard?.writeText(window.location.href).then(() => {
+          wlShare.textContent = 'Link copied ✓';
+          setTimeout(() => { wlShare.textContent = 'Share pakt →'; }, 2500);
+        });
+      }
+    });
+  }
 
 })();
 </script>
