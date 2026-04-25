@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>pakt — Make the pakt. Show up. Live it.</title>
+<meta name="description" content="Stop scrolling. Start showing up. pakt is the social discovery app that turns 'I kind of want to go' into 'we're going together.'" />
+<meta property="og:title" content="pakt — Make the pakt. Show up. Live it." />
+<meta property="og:description" content="The social discovery app for people who are tired of seeing things alone." />
+<meta property="og:image" content="/assets/images/og-image.png" />
+<meta property="og:url" content="https://pakt.app" />
+<meta name="twitter:card" content="summary_large_image" />
+
+<link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,800;0,9..144,900;1,9..144,400;1,9..144,500;1,9..144,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=JetBrains+Mono:ital,wght@0,400;0,500;0,700&display=swap" />
+<link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+
+<!-- Custom cursor glow -->
+<div class="cursor-glow" id="cursorGlow"></div>
+
+<!-- Nav -->
+<nav class="nav" id="nav">
+  <a href="#" class="logo">pakt<span class="dot"></span></a>
+  <div class="nav-links">
+    <a href="#how">How it works</a>
+    <a href="#features">Features</a>
+    <a href="#stories">Stories</a>
+    <a href="#download" class="nav-cta">Get the app</a>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-grid"></div>
+
+  <div class="wrap" style="position:relative;z-index:2;">
+    <div class="hero-eyebrow">Launching Q4 · NYC · LA · Chicago</div>
+
+    <h1 class="hero-title">
+      <span class="line">Stop <em>scrolling.</em></span>
+      <span class="line">Start <span class="underline">showing up.</span></span>
+    </h1>
+
+    <p class="hero-sub">
+      pakt is the social app that turns "I kind of want to go to that" into "we're going together." Discover events worth showing up for — with the people worth showing up with.
+    </p>
+
+    <div class="hero-actions">
+      <a href="#download" class="btn btn-primary">
+        Get the app
+        <svg class="btn-icon" viewBox="0 0 24 24" fill="none"><path d="M5 12h14m-7-7 7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="#how" class="btn btn-secondary">See how it works</a>
+    </div>
+  </div>
+
+  <!-- Floating event cards -->
+  <div class="floating-cards">
+    <div class="float-card float-card-1">
+      <div class="float-card-img"></div>
+      <div class="float-card-cat">Live Music</div>
+      <div class="float-card-title">Jazz Under the Stars</div>
+      <div class="float-card-meta">Sat · Central Park</div>
+      <div class="float-card-badge">🔥 3 friends interested</div>
+    </div>
+    <div class="float-card float-card-2">
+      <div class="float-card-img"></div>
+      <div class="float-card-cat">Food &amp; Drink</div>
+      <div class="float-card-title">Street Food Festival</div>
+      <div class="float-card-meta">Sun · Brooklyn Bridge Park</div>
+    </div>
+    <div class="float-card float-card-3">
+      <div class="float-card-img"></div>
+      <div class="float-card-cat">Outdoors</div>
+      <div class="float-card-title">Sunset Kayak Tour</div>
+      <div class="float-card-meta">Sat · Hudson River</div>
+      <div class="float-card-badge">🔥 5 friends going</div>
+    </div>
+  </div>
+
+  <!-- Stats ticker -->
+  <div class="ticker">
+    <div class="ticker-item">
+      <span class="ticker-num">58%</span>
+      <span class="ticker-label">of adults feel lonely<br/>regularly</span>
+    </div>
+    <div class="ticker-item">
+      <span class="ticker-num">78%</span>
+      <span class="ticker-label">prioritize experiences<br/>over things</span>
+    </div>
+    <div class="ticker-item">
+      <span class="ticker-num">3×</span>
+      <span class="ticker-label">more likely to attend when<br/>a friend is going</span>
+    </div>
+    <div class="ticker-item">
+      <span class="ticker-num">∞</span>
+      <span class="ticker-label">nights you won't spend<br/>doom-scrolling</span>
+    </div>
+  </div>
+</section>
+
+<!-- Problem -->
+<section class="problem">
+  <div class="wrap">
+    <div class="section-label reveal">The problem</div>
+    <h2 class="section-title reveal">
+      You're more connected than ever.<br/>
+      And somehow, <em>lonelier.</em>
+    </h2>
+    <p class="section-intro reveal" style="color:rgba(245,239,228,0.7);">
+      We spend hours watching everyone else's lives. Events come and go. Friends drift apart. The nights you really wanted? You saw them scroll by.
+    </p>
+
+    <div class="stat-grid reveal">
+      <div>
+        <div class="stat-number">4hr 37min</div>
+        <div class="stat-label">Average daily screen time in the US — most of it alone</div>
+      </div>
+      <div>
+        <div class="stat-number">15</div>
+        <div class="stat-label">Text threads required to coordinate a single group outing</div>
+      </div>
+      <div>
+        <div class="stat-number">82%</div>
+        <div class="stat-label">of young adults say they'd attend more events if a friend went with them</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- How It Works -->
+<section class="steps" id="how">
+  <div class="wrap">
+    <div class="section-label reveal">How it works</div>
+    <h2 class="section-title reveal">Three steps. <em>That's it.</em></h2>
+
+    <div class="step-grid">
+      <div class="step reveal">
+        <div class="step-number">01</div>
+        <h3 class="step-title">Swipe local events</h3>
+        <p class="step-desc">Tinder-style discovery, tuned to your interests and neighborhood. Right for interested. Up for going. Left to skip. See what's happening around you in seconds.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-number">02</div>
+        <h3 class="step-title">Match with your people</h3>
+        <p class="step-desc">When a friend — or a friend of a friend — is into the same event, pakt tells you instantly. That's the magic moment. Now you have a plan.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-number">03</div>
+        <h3 class="step-title">Show up together</h3>
+        <p class="step-desc">Group chats form automatically when 3+ friends are going. Coordinate in one place. Make it happen. Look back on nights worth remembering.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Showcase -->
+<section class="showcase">
+  <div class="wrap">
+    <div class="showcase-grid">
+      <div class="showcase-copy reveal">
+        <div class="section-label">The swipe feed</div>
+        <h3>Events <em>curated</em> by your crew.</h3>
+        <p>
+          Most apps show you content designed to keep you scrolling. pakt shows you events that get you <em>outside</em>. Events your friends are interested in float to the top — because the best plans start with someone you already love.
+        </p>
+        <ul class="feature-list">
+          <li><span class="check">✓</span> Real-time friend match alerts</li>
+          <li><span class="check">✓</span> Social Heat scoring (friends + friends-of-friends + taste)</li>
+          <li><span class="check">✓</span> Spotify-powered concert recommendations</li>
+          <li><span class="check">✓</span> Calendar sync so you never miss out</li>
+        </ul>
+      </div>
+
+      <div class="reveal">
+        <div class="phone-frame">
+          <div class="phone-screen">
+            <div class="phone-logo">pakt</div>
+            <div class="mock-card">
+              <div class="mock-heat">🔥 3 friends</div>
+              <div class="mock-card-title">Jazz Under the Stars</div>
+              <div class="mock-card-meta">Sat, Mar 14 · Central Park</div>
+            </div>
+            <div class="mock-actions">
+              <div class="mock-btn">✕</div>
+              <div class="mock-btn center">🎉</div>
+              <div class="mock-btn">💚</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Features -->
+<section class="features" id="features">
+  <div class="wrap">
+    <div class="section-label reveal">The feature set</div>
+    <h2 class="section-title reveal">Everything you need to <em>actually show up.</em></h2>
+
+    <div class="feat-grid">
+      <div class="feat reveal">
+        <div class="feat-icon">🔥</div>
+        <h4>Social Heat</h4>
+        <p>A proprietary score surfaces events based on friend interest, taste match, and recency — not engagement bait.</p>
+      </div>
+      <div class="feat reveal">
+        <div class="feat-icon">✨</div>
+        <h4>Friend Matching</h4>
+        <p>Real-time alerts when friends — or friends of friends — want to go to the same thing. The magic moment.</p>
+      </div>
+      <div class="feat reveal">
+        <div class="feat-icon">💬</div>
+        <h4>Group Chats</h4>
+        <p>Auto-created when 3+ friends are going. Purpose-built for coordination. Archived 7 days after the event.</p>
+      </div>
+      <div class="feat reveal">
+        <div class="feat-icon">🎵</div>
+        <h4>Spotify Sync</h4>
+        <p>Concert recommendations based on your top artists. Taste compatibility scores with friends going to shows.</p>
+      </div>
+      <div class="feat reveal">
+        <div class="feat-icon">🌆</div>
+        <h4>10 Cities at Launch</h4>
+        <p>NYC. LA. Chicago. DC. Boston. Atlanta. Austin. Seattle. Miami. San Francisco. More coming fast.</p>
+      </div>
+      <div class="feat reveal">
+        <div class="feat-icon">🔒</div>
+        <h4>Privacy First</h4>
+        <p>City-level location only. FoF visibility opt-in. E2E encrypted messages. Your social graph is never sold.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section class="testimonials" id="stories">
+  <div class="wrap">
+    <div class="section-label reveal">Early users</div>
+    <h2 class="section-title reveal">Real people. <em>Real nights.</em></h2>
+
+    <div class="quote-grid">
+      <div class="quote reveal">
+        <div class="quote-mark">"</div>
+        <p>I went to three things in my first week on pakt. I'd been in this city for eight months and barely left my apartment. This app actually got me outside.</p>
+        <div class="quote-author">
+          <div class="quote-avatar">SC</div>
+          <div>
+            <div class="quote-name">Sam Chen</div>
+            <div class="quote-meta">Beta user · Software Engineer · NYC</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="quote reveal">
+        <div class="quote-mark">"</div>
+        <p>The friend match moment is dangerous in the best way. I saw my college friend was interested in the same jazz night and I just — bought the ticket right then.</p>
+        <div class="quote-author">
+          <div class="quote-avatar i2">MP</div>
+          <div>
+            <div class="quote-name">Maya Patel</div>
+            <div class="quote-meta">Beta user · UX Designer · Chicago</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="quote reveal">
+        <div class="quote-mark">"</div>
+        <p>I'm the friend who always organizes. pakt does my job for me. The group chats form automatically and everyone actually shows up.</p>
+        <div class="quote-author">
+          <div class="quote-avatar i3">JK</div>
+          <div>
+            <div class="quote-name">Jordan Kim</div>
+            <div class="quote-meta">Beta user · Marketing · LA</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="quote reveal">
+        <div class="quote-mark">"</div>
+        <p>No ads. No algorithm trying to hook me. Just real stuff happening near me, with people I actually want to see. Feels almost radical in 2026.</p>
+        <div class="quote-author">
+          <div class="quote-avatar i4">AR</div>
+          <div>
+            <div class="quote-name">Alex Rivera</div>
+            <div class="quote-meta">Beta user · Teacher · NYC</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="download">
+  <h2 class="cta-title">
+    Make the pakt.<br/>
+    <em>Show up.</em><br/>
+    Live it.
+  </h2>
+  <p class="cta-sub">Free on iPhone and Android. No ads. No selling your data. Just better nights.</p>
+  <div class="cta-buttons">
+    <a href="#" class="store-btn">
+      <span class="store-btn-icon">🍎</span>
+      <span class="store-btn-text">
+        <span class="store-btn-top">Download on the</span>
+        <span class="store-btn-main">App Store</span>
+      </span>
+    </a>
+    <a href="#" class="store-btn">
+      <span class="store-btn-icon">▶</span>
+      <span class="store-btn-text">
+        <span class="store-btn-top">Get it on</span>
+        <span class="store-btn-main">Google Play</span>
+      </span>
+    </a>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="#" class="logo">pakt<span class="dot"></span></a>
+      <p class="footer-tagline">Make the pakt. Show up. Live it.</p>
+    </div>
+    <div class="footer-col">
+      <h5>Product</h5>
+      <ul>
+        <li><a href="#how">How it works</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#download">Download</a></li>
+        <li><a href="#">Roadmap</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Company</h5>
+      <ul>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Press</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Blog</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Legal</h5>
+      <ul>
+        <li><a href="privacy.html">Privacy</a></li>
+        <li><a href="terms.html">Terms</a></li>
+        <li><a href="#">Cookies</a></li>
+        <li><a href="#">Community Guidelines</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 pakt, Inc. All rights reserved.</span>
+    <span>Brooklyn, NY · Los Angeles, CA</span>
+  </div>
+</footer>
+
+<script src="assets/js/app.js"></script>
+</body>
+</html>
