@@ -9,7 +9,6 @@
   gtag('js', new Date());
 
   gtag('config', 'G-9ZVL39YYQL');
-</script>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>pakt — Make the pakt. Show up. Live it.</title>
@@ -227,17 +226,33 @@ body::before {
 /* ─── Hero ───────────────────────────────────────────────────────────── */
 .hero {
   min-height: 100vh;
-  padding: 160px var(--gutter) 200px;
+  padding: 120px var(--gutter) 80px;
   position: relative;
-  display: flex; flex-direction: column; justify-content: center;
-  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  max-width: var(--max);
+  margin: 0 auto;
+  overflow: visible;
 }
-@media (max-width: 768px) {
+@media (max-width: 960px) {
   .hero {
-    min-height: auto;
+    grid-template-columns: 1fr;
+    text-align: center;
     padding: 120px var(--gutter) 60px;
+    gap: 48px;
   }
 }
+
+/* Hero background spans full viewport */
+.hero-bg-full {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+}
+
 .hero-grid {
   position: absolute; inset: 0;
   background-image:
@@ -248,6 +263,12 @@ body::before {
   -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0.4), transparent);
   pointer-events: none;
 }
+
+.hero-copy { position: relative; z-index: 2; }
+@media (max-width: 960px) {
+  .hero-actions { justify-content: center; }
+}
+
 .hero-eyebrow {
   font-family: var(--mono);
   font-size: 13px;
@@ -356,79 +377,8 @@ body::before {
   .btn-secondary:hover { background: var(--ink); color: var(--bone); }
 }
 
-/* ─── Stats ticker ───────────────────────────────────────────────────── */
-.ticker {
-  position: absolute;
-  bottom: 0;
-  left: var(--gutter);
-  right: var(--gutter);
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  padding: 28px 0;
-  border-top: 1px solid var(--rule);
-  gap: 24px;
-  flex-wrap: wrap;
-  animation: fadeInUp 0.9s ease 0.7s both;
-}
-@media (max-width: 768px) {
-  .ticker {
-    position: relative;
-    left: auto; right: auto;
-    bottom: auto;
-    margin-top: 48px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px 16px;
-    justify-content: start;
-    align-items: start;
-  }
-}
-.ticker-item { display: flex; flex-direction: column; }
-.ticker-num {
-  font-family: var(--display);
-  font-size: 36px;
-  font-weight: 500;
-  line-height: 1;
-}
-.ticker-label {
-  font-family: var(--mono);
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  color: var(--text-mute);
-  margin-top: 8px;
-}
 
-/* ─── Floating Event Cards ───────────────────────────────────────────── */
-.floating-cards {
-  position: absolute; top: 0; right: 0; bottom: 0;
-  width: 45%;
-  pointer-events: none;
-  display: none;
-}
-@media (min-width: 1100px) { .floating-cards { display: block; } }
 
-.float-card {
-  position: absolute;
-  background: var(--cream);
-  border-radius: 18px;
-  padding: 18px;
-  width: 240px;
-  box-shadow: 0 30px 60px -20px rgba(14,14,15,0.25);
-  border: 1px solid var(--rule);
-  animation: floatCard 6s ease-in-out infinite;
-}
-.float-card-1 { top: 20%; right: 12%; transform: rotate(6deg); }
-.float-card-2 { top: 48%; right: 32%; transform: rotate(-4deg); animation-delay: 1.5s; }
-.float-card-3 { top: 68%; right: 8%; transform: rotate(3deg); animation-delay: 3s; }
-@keyframes floatCard {
-  0%, 100% { transform: rotate(var(--r, 0deg)) translateY(0); }
-  50% { transform: rotate(var(--r, 0deg)) translateY(-12px); }
-}
-.float-card-1 { --r: 6deg; }
-.float-card-2 { --r: -4deg; }
-.float-card-3 { --r: 3deg; }
 .float-card-img {
   height: 110px; border-radius: 10px; margin-bottom: 12px;
   position: relative; overflow: hidden;
@@ -881,21 +831,428 @@ body::before {
   background: #07111e; border-radius: 50%;
 }
 
-.float-card-cat {
-  font-family: var(--mono); font-size: 10px; text-transform: uppercase;
-  letter-spacing: 1.5px; color: var(--ember); margin-bottom: 4px;
+
+
+
+/* ═══════════════════════════════════════════════════════════
+   ANIMATED PHONE DEMO
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── Phone container ── */
+.hero-phone-demo {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 0;
 }
-.float-card-2 .float-card-cat { color: var(--indigo); }
-.float-card-3 .float-card-cat { color: var(--sage); }
-.float-card-title {
-  font-family: var(--display); font-size: 16px; font-weight: 600;
-  line-height: 1.2; margin-bottom: 6px;
+@media (max-width: 960px) {
+  .hero-phone-demo { padding: 0; }
 }
-.float-card-meta { font-size: 11px; color: var(--text-mute); }
-.float-card-badge {
-  display: inline-flex; align-items: center; gap: 4px;
-  margin-top: 10px; font-size: 10px; font-weight: 600;
-  color: var(--ember);
+
+/* Glow ring behind phone */
+.hero-phone-demo::before {
+  content: '';
+  position: absolute;
+  width: 320px; height: 320px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,83,57,.18) 0%, transparent 70%);
+  animation: demoGlow 4s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes demoGlow {
+  0%,100% { transform: scale(1);   opacity: .8; }
+  50%      { transform: scale(1.1); opacity: 1; }
+}
+
+/* ── Phone shell ── */
+.demo-phone {
+  width: 300px;
+  background: #0e0e0f;
+  border-radius: 48px;
+  border: 1.5px solid rgba(255,255,255,.1);
+  box-shadow:
+    0 0 0 1px rgba(0,0,0,.6),
+    0 50px 100px rgba(0,0,0,.35),
+    0 20px 40px rgba(0,0,0,.2),
+    inset 0 1px 0 rgba(255,255,255,.06);
+  overflow: hidden;
+  position: relative;
+  animation: phoneFloat 5s ease-in-out infinite;
+}
+@keyframes phoneFloat {
+  0%,100% { transform: translateY(0) rotate(0deg); }
+  33%      { transform: translateY(-10px) rotate(.4deg); }
+  66%      { transform: translateY(-5px) rotate(-.3deg); }
+}
+
+/* ── Screen ── */
+.demo-screen {
+  background: #0a0a0d;
+  position: relative;
+  overflow: hidden;
+  height: 580px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Status bar ── */
+.demo-status {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 22px 0;
+  font-size: 11px;
+  font-weight: 700;
+  color: #fff;
+  font-family: var(--body);
+  flex-shrink: 0;
+  position: relative;
+  z-index: 10;
+}
+.demo-status-right { display: flex; align-items: center; gap: 5px; }
+.demo-sig { display: flex; align-items: flex-end; gap: 1.5px; }
+.demo-sig span { background: #fff; border-radius: 1px; width: 3px; }
+.demo-sig span:nth-child(1) { height: 4px; }
+.demo-sig span:nth-child(2) { height: 7px; }
+.demo-sig span:nth-child(3) { height: 10px; }
+.demo-sig span:nth-child(4) { height: 13px; opacity:.4; }
+.demo-bat {
+  width: 22px; height: 11px;
+  border: 1.5px solid rgba(255,255,255,.7); border-radius: 3px;
+  position: relative;
+}
+.demo-bat::before {
+  content: ''; position: absolute;
+  left: 2px; top: 1.5px; right: 4px; bottom: 1.5px;
+  background: #4CD964; border-radius: 1px;
+}
+.demo-bat::after {
+  content: ''; position: absolute;
+  right: -4px; top: 50%; transform: translateY(-50%);
+  width: 2px; height: 5px;
+  background: rgba(255,255,255,.4); border-radius: 0 1px 1px 0;
+}
+
+/* ── App header bar ── */
+.demo-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 18px 10px;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 10;
+}
+.demo-logo {
+  font-family: var(--display);
+  font-size: 22px; font-weight: 800; font-style: italic;
+  color: var(--ember); letter-spacing: -.5px;
+}
+.demo-loc {
+  display: flex; align-items: center; gap: 4px;
+  font-size: 11px; color: rgba(255,255,255,.45); font-weight: 500;
+}
+.demo-loc-dot {
+  width: 5px; height: 5px; border-radius: 50%; background: var(--ember);
+  animation: pulse 2s ease-in-out infinite;
+}
+.demo-notif {
+  width: 28px; height: 28px; border-radius: 8px;
+  background: rgba(255,255,255,.07);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px;
+}
+
+/* ── Progress dots ── */
+.demo-progress {
+  display: flex; justify-content: center; gap: 5px;
+  padding: 0 0 8px; flex-shrink: 0;
+  position: relative; z-index: 10;
+}
+.demo-dot {
+  width: 5px; height: 5px; border-radius: 50%;
+  background: rgba(255,255,255,.2);
+  transition: background .3s, transform .3s;
+}
+.demo-dot.active {
+  background: var(--ember);
+  transform: scale(1.3);
+  box-shadow: 0 0 6px rgba(255,83,57,.6);
+}
+
+/* ── Card stack area ── */
+.demo-stack {
+  flex: 1;
+  position: relative;
+  margin: 0 12px;
+  overflow: visible;
+}
+
+/* ── Individual swipe cards ── */
+.demo-card {
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  overflow: hidden;
+  cursor: grab;
+  transform-origin: center bottom;
+  transition: transform .55s cubic-bezier(.22,.68,0,1.3), opacity .4s ease, box-shadow .3s;
+  box-shadow: 0 12px 40px rgba(0,0,0,.6);
+  will-change: transform;
+}
+.demo-card.behind {
+  transform: scale(.94) translateY(12px);
+  z-index: 1;
+}
+.demo-card.active { z-index: 3; }
+.demo-card.swipe-right {
+  transform: translateX(140%) rotate(22deg) !important;
+  transition: transform .5s cubic-bezier(.55,.06,.68,.19) !important;
+  opacity: 0;
+}
+.demo-card.swipe-left {
+  transform: translateX(-140%) rotate(-22deg) !important;
+  transition: transform .5s cubic-bezier(.55,.06,.68,.19) !important;
+  opacity: 0;
+}
+.demo-card.entering {
+  transform: scale(.94) translateY(12px);
+  opacity: 0;
+}
+.demo-card.entered {
+  transform: scale(1) translateY(0);
+  opacity: 1;
+  transition: transform .5s cubic-bezier(.22,.68,0,1.2), opacity .3s;
+}
+
+/* ── Card scene area ── */
+.demo-scene {
+  height: 65%; position: relative; overflow: hidden;
+}
+
+/* ── Card overlay gradient ── */
+.demo-card-grad {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top,
+    rgba(0,0,0,.95) 0%,
+    rgba(0,0,0,.65) 30%,
+    rgba(0,0,0,.2)  55%,
+    rgba(0,0,0,.08) 75%,
+    transparent 90%
+  );
+  z-index: 2;
+}
+
+/* ── Card top row: category + heat ── */
+.demo-card-top {
+  position: absolute; top: 10px; left: 10px; right: 10px;
+  display: flex; justify-content: space-between; align-items: center;
+  z-index: 4;
+}
+.demo-cat {
+  background: rgba(255,255,255,.13); backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,.18);
+  padding: 3px 9px; border-radius: 20px;
+  font-size: 9px; font-weight: 600; color: #fff; letter-spacing: .04em;
+}
+.demo-heat {
+  background: rgba(255,83,57,.9); padding: 3px 8px; border-radius: 20px;
+  font-size: 9px; font-weight: 700; color: #fff;
+  box-shadow: 0 2px 8px rgba(255,83,57,.5);
+}
+
+/* ── Friends row ── */
+.demo-friends {
+  position: absolute; bottom: 55px; left: 12px; right: 12px;
+  display: flex; align-items: center; gap: 4px; z-index: 4;
+}
+.demo-av {
+  width: 20px; height: 20px; border-radius: 50%;
+  border: 1.5px solid rgba(255,255,255,.3);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 8px; font-weight: 700; color: #fff;
+  margin-right: -5px;
+}
+.demo-friends-txt {
+  font-size: 9px; font-weight: 600;
+  color: rgba(255,255,255,.8); margin-left: 10px;
+}
+
+/* ── Event title ── */
+.demo-card-title {
+  position: absolute; bottom: 32px; left: 12px; right: 12px;
+  font-family: var(--display); font-size: 18px; font-weight: 600;
+  color: #fff; z-index: 4; line-height: 1.1; letter-spacing: -.02em;
+}
+.demo-card-venue {
+  position: absolute; bottom: 14px; left: 12px; right: 12px;
+  font-size: 10px; color: rgba(255,255,255,.6); z-index: 4;
+}
+
+/* ── Info pills ── */
+.demo-pills {
+  background: rgba(0,0,0,.55);
+  padding: 10px 12px;
+  display: flex; gap: 6px; align-items: center; flex-shrink: 0;
+}
+.demo-pill {
+  background: rgba(255,255,255,.1);
+  border: 1px solid rgba(255,255,255,.15);
+  padding: 3px 8px; border-radius: 8px;
+  font-size: 9px; font-weight: 600;
+  color: rgba(255,255,255,.85);
+}
+.demo-pill.price { background: rgba(6,214,160,.15); border-color: rgba(6,214,160,.35); color: #06D6A0; }
+
+/* ── SWIPE FEEDBACK overlays ── */
+.demo-like-stamp, .demo-nope-stamp {
+  position: absolute; z-index: 10;
+  border: 3px solid; border-radius: 8px;
+  padding: 4px 12px;
+  font-family: var(--display); font-size: 28px; font-weight: 800;
+  top: 30px;
+  opacity: 0; pointer-events: none;
+  transform: rotate(0deg);
+  transition: opacity .25s;
+}
+.demo-like-stamp {
+  color: #06D6A0; border-color: #06D6A0;
+  left: 14px; transform: rotate(-14deg);
+}
+.demo-nope-stamp {
+  color: #FF4F5A; border-color: #FF4F5A;
+  right: 14px; transform: rotate(14deg);
+}
+.demo-card.swipe-right .demo-like-stamp { opacity: 1; }
+.demo-card.swipe-left  .demo-nope-stamp { opacity: 1; }
+
+/* ── Action buttons ── */
+.demo-actions {
+  display: flex; justify-content: center; align-items: center;
+  gap: 14px; padding: 12px 18px 14px;
+  background: #0a0a0d; flex-shrink: 0;
+}
+.demo-btn {
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 50%; font-size: 18px;
+  border: 1.5px solid #1e1e26; background: #14141a;
+  transition: transform .15s, box-shadow .15s;
+  cursor: pointer; -webkit-tap-highlight-color: transparent;
+}
+.demo-btn:active { transform: scale(.9); }
+.demo-btn-skip  { width: 44px; height: 44px; font-size: 18px; }
+.demo-btn-super { width: 40px; height: 40px; font-size: 16px; }
+.demo-btn-go    {
+  width: 58px; height: 58px; font-size: 22px;
+  background: var(--ember); border: none;
+  box-shadow: 0 6px 24px rgba(255,83,57,.45);
+}
+.demo-btn-go.pulse-go {
+  animation: btnPulse .4s ease;
+}
+@keyframes btnPulse {
+  0%   { transform: scale(1); box-shadow: 0 6px 24px rgba(255,83,57,.45); }
+  40%  { transform: scale(1.25); box-shadow: 0 8px 32px rgba(255,83,57,.8); }
+  100% { transform: scale(1); box-shadow: 0 6px 24px rgba(255,83,57,.45); }
+}
+.demo-btn-skip.pulse-skip {
+  animation: skipPulse .35s ease;
+}
+@keyframes skipPulse {
+  0%   { transform: scale(1); }
+  40%  { transform: scale(1.2); background: rgba(255,79,90,.15); }
+  100% { transform: scale(1); }
+}
+
+/* ── MATCH SCREEN ── */
+.demo-match {
+  position: absolute; inset: 0;
+  background: linear-gradient(160deg, #1a0510 0%, #0e0020 50%, #1a000a 100%);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  z-index: 20;
+  opacity: 0; pointer-events: none;
+  transition: opacity .4s ease;
+  text-align: center; padding: 20px;
+}
+.demo-match.visible { opacity: 1; pointer-events: auto; }
+
+/* Confetti canvas */
+.demo-confetti-wrap {
+  position: absolute; inset: 0; pointer-events: none; overflow: hidden;
+}
+.demo-confetti-piece {
+  position: absolute;
+  width: 5px; height: 9px; border-radius: 2px;
+  animation: confettiFall linear both;
+}
+@keyframes confettiFall {
+  0%   { transform: translateY(-20px) rotate(0deg) scaleX(1); opacity: 1; }
+  80%  { opacity: 1; }
+  100% { transform: translateY(600px) rotate(720deg) scaleX(.4); opacity: 0; }
+}
+
+.demo-match-icon { font-size: 40px; margin-bottom: 8px; animation: matchBounce .5s .2s both; }
+@keyframes matchBounce {
+  0%   { transform: scale(0) rotate(-10deg); opacity: 0; }
+  60%  { transform: scale(1.2) rotate(4deg); opacity: 1; }
+  100% { transform: scale(1) rotate(0deg); }
+}
+.demo-match-title {
+  font-family: var(--display); font-size: 24px; font-weight: 800;
+  font-style: italic; color: var(--ember); margin-bottom: 4px;
+  animation: fadeInUp .5s .35s both;
+}
+.demo-match-event {
+  font-size: 12px; color: rgba(255,255,255,.6); margin-bottom: 18px;
+  animation: fadeInUp .5s .45s both;
+}
+.demo-match-avatars {
+  display: flex; align-items: center; justify-content: center; gap: 14px;
+  margin-bottom: 14px; animation: fadeInUp .5s .55s both;
+}
+.demo-match-av {
+  width: 56px; height: 56px; border-radius: 50%;
+  border: 3px solid rgba(255,255,255,.15);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--display); font-size: 14px; font-weight: 600; color: #fff;
+}
+.demo-match-heart {
+  font-size: 22px; color: var(--ember);
+  animation: heartbeat 1s ease-in-out infinite;
+}
+.demo-match-sub {
+  font-size: 11px; color: rgba(255,255,255,.5);
+  margin-bottom: 18px; animation: fadeInUp .5s .65s both;
+}
+.demo-match-btns { display: flex; flex-direction: column; gap: 8px; width: 100%; animation: fadeInUp .5s .75s both; }
+.demo-match-btn {
+  padding: 10px; border-radius: 10px;
+  font-family: var(--body); font-size: 12px; font-weight: 600;
+  border: none; cursor: pointer;
+}
+.demo-match-btn-primary { background: var(--ember); color: #fff; }
+.demo-match-btn-ghost {
+  background: rgba(255,255,255,.07);
+  border: 1px solid rgba(255,255,255,.12);
+  color: rgba(255,255,255,.6);
+}
+
+/* ── Hand swipe hint ── */
+.demo-hand {
+  position: absolute;
+  bottom: 100px; right: 60px;
+  font-size: 28px;
+  z-index: 20; pointer-events: none;
+  animation: handHint 2s ease-in-out 1s both;
+}
+@keyframes handHint {
+  0%   { opacity: 0; transform: translateX(0); }
+  15%  { opacity: 1; transform: translateX(0); }
+  65%  { opacity: 1; transform: translateX(-50px); }
+  85%  { opacity: .4; transform: translateX(-50px); }
+  100% { opacity: 0; transform: translateX(-50px); }
 }
 
 /* ─── Section Defaults ───────────────────────────────────────────────── */
@@ -2066,7 +2423,9 @@ footer {
 <!-- HERO -->
 <section class="hero">
   <div class="hero-grid"></div>
-  <div class="wrap" style="position:relative;z-index:2;">
+
+  <!-- Left: copy -->
+  <div class="hero-copy">
     <div class="hero-eyebrow">Coming Soon · NYC · LA · Chicago</div>
     <h1 class="hero-title">
       <span class="line">Stop <em>scrolling.</em></span>
@@ -2079,71 +2438,136 @@ footer {
     </div>
   </div>
 
-  <div class="floating-cards">
-    <div class="float-card float-card-1">
-      <div class="float-card-img fc-jazz">
-        <div class="fc-j-spot fc-j-spot-1"></div>
-        <div class="fc-j-spot fc-j-spot-2"></div>
-        <div class="fc-j-spot fc-j-spot-3"></div>
-        <div class="fc-j-stage"></div>
-        <div class="fc-j-sil fc-j-sil-1"></div>
-        <div class="fc-j-sil fc-j-sil-2"></div>
-        <div class="fc-j-sil fc-j-sil-3"></div>
-        <div class="fc-j-tree fc-j-tree-l"></div>
-        <div class="fc-j-tree fc-j-tree-r"></div>
-        <div class="fc-j-crowd"></div>
-      </div>
-      <div class="float-card-cat">Live Music</div>
-      <div class="float-card-title">Jazz Under the Stars</div>
-      <div class="float-card-meta">Sat · Central Park</div>
-      <div class="float-card-badge">🔥 3 friends interested</div>
-    </div>
-    <div class="float-card float-card-2">
-      <div class="float-card-img fc-food">
-        <div class="fc-f-skyline"></div>
-        <div class="fc-f-bunting"></div>
-        <div class="fc-f-truck fc-f-truck-1"></div>
-        <div class="fc-f-win  fc-f-win-1"></div>
-        <div class="fc-f-awn  fc-f-awn-1"></div>
-        <div class="fc-f-truck fc-f-truck-2"></div>
-        <div class="fc-f-win  fc-f-win-2"></div>
-        <div class="fc-f-awn  fc-f-awn-2"></div>
-        <div class="fc-f-stand"></div>
-        <div class="fc-f-steam fc-f-steam-1"></div>
-        <div class="fc-f-steam fc-f-steam-2"></div>
-        <div class="fc-f-ground"></div>
-        <div class="fc-f-crowd"></div>
-      </div>
-      <div class="float-card-cat">Food &amp; Drink</div>
-      <div class="float-card-title">Street Food Festival</div>
-      <div class="float-card-meta">Sun · Brooklyn Bridge Park</div>
-    </div>
-    <div class="float-card float-card-3">
-      <div class="float-card-img fc-kayak">
-        <div class="fc-k-sun"></div>
-        <div class="fc-k-water"></div>
-        <div class="fc-k-shimmer"></div>
-        <div class="fc-k-mtn"></div>
-        <div class="fc-k-kayak fc-k-kayak-1">
-          <div class="fc-k-paddler"></div>
+  <!-- Right: animated phone demo -->
+  <div class="hero-phone-demo">
+    <div class="demo-phone">
+      <div class="demo-screen">
+        <div class="demo-status">
+          <span>9:41</span>
+          <div class="demo-status-right">
+            <div class="demo-sig"><span></span><span></span><span></span><span></span></div>
+            <span style="font-size:10px">5G</span>
+            <div class="demo-bat"></div>
+          </div>
         </div>
-        <div class="fc-k-kayak fc-k-kayak-2">
-          <div class="fc-k-paddler"></div>
+        <div class="demo-header">
+          <span class="demo-logo">pakt</span>
+          <div class="demo-loc"><div class="demo-loc-dot"></div>New York</div>
+          <div class="demo-notif">🔔</div>
         </div>
-      </div>
-      <div class="float-card-cat">Outdoors</div>
-      <div class="float-card-title">Sunset Kayak Tour</div>
-      <div class="float-card-meta">Sat · Hudson River</div>
-      <div class="float-card-badge">🔥 5 friends going</div>
-    </div>
-  </div>
+        <div class="demo-progress">
+          <div class="demo-dot active" id="dot0"></div>
+          <div class="demo-dot" id="dot1"></div>
+          <div class="demo-dot" id="dot2"></div>
+          <div class="demo-dot" id="dot3"></div>
+        </div>
+        <div class="demo-stack" id="demoStack">
 
-  <div class="ticker">
-    <div class="ticker-item"><span class="ticker-num">58%</span><span class="ticker-label">of adults feel lonely<br/>regularly</span></div>
-    <div class="ticker-item"><span class="ticker-num">78%</span><span class="ticker-label">prioritize experiences<br/>over things</span></div>
-    <div class="ticker-item"><span class="ticker-num">3×</span><span class="ticker-label">more likely to attend when<br/>a friend is going</span></div>
-    <div class="ticker-item"><span class="ticker-num">∞</span><span class="ticker-label">nights you won't spend<br/>doom-scrolling</span></div>
-  </div>
+          <!-- Card 0: Jazz — swipe RIGHT -->
+          <div class="demo-card active" id="card0">
+            <div class="demo-scene">
+              <div class="fc-jazz" style="position:absolute;inset:0;background-image:url('assets/images/event-jazz.jpg');background-size:cover;background-position:center 30%;">
+              </div>
+              <div class="demo-card-grad"></div>
+              <div class="demo-card-top"><div class="demo-cat">🎷 Live Music</div><div class="demo-heat">🔥 94</div></div>
+              <div class="demo-friends">
+                <div class="demo-av" style="background:#E8523A">J</div>
+                <div class="demo-av" style="background:#4A7FC1">M</div>
+                <div class="demo-av" style="background:#7B5EA7">K</div>
+                <span class="demo-friends-txt">3 friends going</span>
+              </div>
+              <div class="demo-card-title">Jazz Under the Stars</div>
+              <div class="demo-card-venue">📍 Central Park SummerStage</div>
+              <div class="demo-like-stamp">GOING</div><div class="demo-nope-stamp">NOPE</div>
+            </div>
+            <div class="demo-pills">
+              <span class="demo-pill">Sat Aug 16</span><span class="demo-pill">8:00 PM</span><span class="demo-pill price">$35</span>
+            </div>
+          </div>
+
+          <!-- Card 1: Comedy — swipe LEFT -->
+          <div class="demo-card behind" id="card1" style="z-index:2;">
+            <div class="demo-scene">
+              <div style="position:absolute;inset:0;background-image:url('assets/images/event-comedy.jpg');background-size:cover;background-position:center 20%;">
+              </div>
+              <div class="demo-card-grad"></div>
+              <div class="demo-card-top"><div class="demo-cat">😂 Comedy</div><div class="demo-heat">🔥 61</div></div>
+              <div class="demo-friends"><div class="demo-av" style="background:#2E7FC1">R</div><span class="demo-friends-txt">1 friend interested</span></div>
+              <div class="demo-card-title">Friday Night Stand-Up</div>
+              <div class="demo-card-venue">📍 The Bell House, Brooklyn</div>
+              <div class="demo-like-stamp">GOING</div><div class="demo-nope-stamp">NOPE</div>
+            </div>
+            <div class="demo-pills">
+              <span class="demo-pill">Fri Aug 15</span><span class="demo-pill">9:00 PM</span><span class="demo-pill price">$22</span>
+            </div>
+          </div>
+
+          <!-- Card 2: Rooftop — swipe RIGHT → MATCH -->
+          <div class="demo-card behind" id="card2">
+            <div class="demo-scene">
+              <div style="position:absolute;inset:0;background-image:url('assets/images/event-rooftop.jpg');background-size:cover;background-position:center 40%;">
+              </div>
+              <div class="demo-card-grad"></div>
+              <div class="demo-card-top"><div class="demo-cat">🌆 Rooftop</div><div class="demo-heat">🔥 89</div></div>
+              <div class="demo-friends">
+                <div class="demo-av" style="background:#E8523A">J</div>
+                <div class="demo-av" style="background:#4A7FC1">M</div>
+                <div class="demo-av" style="background:#2EA860">T</div>
+                <div class="demo-av" style="background:#C4612A">S</div>
+                <span class="demo-friends-txt">4 friends going</span>
+              </div>
+              <div class="demo-card-title">Rooftop Sunset Party</div>
+              <div class="demo-card-venue">📍 230 Fifth, Manhattan</div>
+              <div class="demo-like-stamp">GOING</div><div class="demo-nope-stamp">NOPE</div>
+            </div>
+            <div class="demo-pills">
+              <span class="demo-pill">Sat Aug 16</span><span class="demo-pill">6:00 PM</span><span class="demo-pill price">Free</span>
+            </div>
+          </div>
+
+          <!-- Card 3: depth card -->
+          <div class="demo-card" id="card3" style="z-index:0;transform:scale(.88) translateY(24px);opacity:.5;">
+            <div class="demo-scene">
+              <div class="fc-food" style="position:absolute;inset:0;background-image:url('assets/images/event-food.jpg');background-size:cover;background-position:center;">
+              </div>
+              <div class="demo-card-grad"></div>
+              <div class="demo-card-top"><div class="demo-cat">🌮 Food</div><div class="demo-heat">🔥 77</div></div>
+              <div class="demo-card-title">Street Food Festival</div>
+              <div class="demo-card-venue">📍 Brooklyn Bridge Park</div>
+            </div>
+            <div class="demo-pills"><span class="demo-pill">Sun Aug 17</span><span class="demo-pill price">$12</span></div>
+          </div>
+
+        </div><!-- /demo-stack -->
+
+        <!-- Match screen -->
+        <div class="demo-match" id="demoMatch">
+          <div class="demo-confetti-wrap" id="demoConfetti"></div>
+          <div class="demo-match-icon">🎉</div>
+          <div class="demo-match-title">It's a Match!</div>
+          <div class="demo-match-event">Rooftop Sunset Party</div>
+          <div class="demo-match-avatars">
+            <div class="demo-match-av" style="background:linear-gradient(135deg,#E8523A,#c93040)">You</div>
+            <div class="demo-match-heart">♥</div>
+            <div class="demo-match-av" style="background:linear-gradient(135deg,#4A7FC1,#2a5fa0)">Jordan</div>
+          </div>
+          <div class="demo-match-sub">+3 more friends are going</div>
+          <div class="demo-match-btns">
+            <button class="demo-match-btn demo-match-btn-primary">Open group chat</button>
+            <button class="demo-match-btn demo-match-btn-ghost">Share pakt link</button>
+          </div>
+        </div>
+
+        <div class="demo-actions">
+          <button class="demo-btn demo-btn-skip" id="demoSkip">✕</button>
+          <button class="demo-btn demo-btn-super" id="demoSuper">⭐</button>
+          <button class="demo-btn demo-btn-go" id="demoGo">💚</button>
+        </div>
+      </div><!-- /demo-screen -->
+    </div><!-- /demo-phone -->
+    <div class="demo-hand" id="demoHand">👆</div>
+  </div><!-- /hero-phone-demo -->
+
 </section>
 
 <!-- PROBLEM -->
@@ -2609,6 +3033,193 @@ footer {
       }
     });
   }
+
+  // ══════════════════════════════════════════════════
+  // SWIPE DEMO STATE MACHINE
+  // Sequence: card0 → right | card1 → left | card2 → right → MATCH | reset
+  // ══════════════════════════════════════════════════
+  (function initDemo() {
+    const cards   = [0,1,2].map(i => document.getElementById('card' + i));
+    const dots    = [0,1,2,3].map(i => document.getElementById('dot'  + i));
+    const match   = document.getElementById('demoMatch');
+    const confWrap= document.getElementById('demoConfetti');
+    const goBtn   = document.getElementById('demoGo');
+    const skipBtn = document.getElementById('demoSkip');
+    const hand    = document.getElementById('demoHand');
+
+    if (!cards[0]) return; // not on landing page
+
+    // Sequence: [cardIdx, direction ('right'|'left'), matchAfter]
+    const SEQ = [
+      { card: 0, dir: 'right', match: false },
+      { card: 1, dir: 'left',  match: false },
+      { card: 2, dir: 'right', match: true  },
+    ];
+
+    let step = 0;
+    let busy = false;
+
+    // Timing constants (ms)
+    const T_PAUSE      = 1800;  // time card is shown before swiping
+    const T_SWIPE      = 520;   // swipe fly-out animation duration
+    const T_ENTER      = 480;   // next card enter animation
+    const T_MATCH_SHOW = 2800;  // match screen display time
+    const T_RESET_GAP  = 600;   // gap before loop restart
+    const LOOP_DELAY   = 400;   // delay before auto-sequence starts on load
+
+    function setActiveDot(idx) {
+      dots.forEach((d, i) => {
+        d.classList.toggle('active', i === idx);
+      });
+    }
+
+    function pulseButton(btn) {
+      btn.classList.remove('pulse-go', 'pulse-skip');
+      void btn.offsetWidth; // reflow
+      btn.classList.add(btn === goBtn ? 'pulse-go' : 'pulse-skip');
+      setTimeout(() => btn.classList.remove('pulse-go', 'pulse-skip'), 400);
+    }
+
+    function spawnConfetti() {
+      confWrap.innerHTML = '';
+      const colors = ['#FF5339','#FFD166','#06D6A0','#4A7FC1','#fff','#E8523A','#CAFF3C'];
+      for (let i = 0; i < 32; i++) {
+        const el = document.createElement('div');
+        el.className = 'demo-confetti-piece';
+        el.style.cssText = [
+          'left:' + (Math.random() * 100) + '%',
+          'background:' + colors[Math.floor(Math.random() * colors.length)],
+          'animation-duration:' + (1.6 + Math.random() * 1.4) + 's',
+          'animation-delay:'    + (Math.random() * .6) + 's',
+          'transform:rotate('   + (Math.random() * 360) + 'deg)',
+          'width:' + (4 + Math.random() * 4) + 'px',
+          'height:'+ (7 + Math.random() * 6) + 'px',
+        ].join(';');
+        confWrap.appendChild(el);
+      }
+    }
+
+    function resetCards() {
+      // Put all cards back to starting state silently
+      cards.forEach((c, i) => {
+        if (!c) return;
+        c.classList.remove('swipe-right', 'swipe-left', 'active', 'behind', 'entering', 'entered');
+        c.style.transition = 'none';
+        c.style.opacity = '1';
+        if (i === 0)      { c.classList.add('active'); c.style.transform = ''; c.style.zIndex = '3'; }
+        else if (i === 1) { c.classList.add('behind'); c.style.transform = ''; c.style.zIndex = '2'; }
+        else if (i === 2) { c.classList.add('behind'); c.style.transform = ''; c.style.zIndex = '1'; }
+        // force reflow so transition:none takes effect
+        void c.offsetWidth;
+        c.style.transition = '';
+      });
+      match.classList.remove('visible');
+      setActiveDot(0);
+      step = 0;
+    }
+
+    function runStep() {
+      if (busy) return;
+      busy = true;
+
+      const { card: cIdx, dir, match: showMatch } = SEQ[step];
+      const card = cards[cIdx];
+      if (!card) { busy = false; return; }
+
+      // Highlight active dot
+      setActiveDot(cIdx);
+
+      // Pulse the correct button
+      setTimeout(() => {
+        if (dir === 'right') pulseButton(goBtn);
+        else                 pulseButton(skipBtn);
+      }, T_PAUSE - 300);
+
+      // Swipe the card out
+      setTimeout(() => {
+        card.classList.add(dir === 'right' ? 'swipe-right' : 'swipe-left');
+
+        setTimeout(() => {
+          // Bring next card in (if not match ending)
+          if (!showMatch) {
+            const nextIdx = cIdx + 1;
+            const next = cards[nextIdx];
+            if (next) {
+              next.classList.remove('behind');
+              next.classList.add('entered');
+            }
+            step++;
+            busy = false;
+            setTimeout(runStep, T_ENTER + 200);
+          } else {
+            // Show match screen
+            setActiveDot(3);
+            spawnConfetti();
+            match.classList.add('visible');
+
+            // After match display, reset and loop
+            setTimeout(() => {
+              match.classList.remove('visible');
+              setTimeout(() => {
+                resetCards();
+                busy = false;
+                setTimeout(runStep, T_RESET_GAP);
+              }, 400);
+            }, T_MATCH_SHOW);
+          }
+        }, T_SWIPE);
+
+      }, T_PAUSE);
+    }
+
+    // Manual button controls
+    goBtn.addEventListener('click', () => {
+      if (busy || step >= SEQ.length) return;
+      pulseButton(goBtn);
+      const { card: cIdx, match: showMatch } = SEQ[step];
+      cards[cIdx].classList.add('swipe-right');
+      busy = true;
+      setTimeout(() => {
+        if (!showMatch && cards[cIdx + 1]) {
+          cards[cIdx + 1].classList.remove('behind');
+          cards[cIdx + 1].classList.add('entered');
+          step++;
+          busy = false;
+          setTimeout(runStep, T_ENTER + 200);
+        } else if (showMatch) {
+          setActiveDot(3);
+          spawnConfetti();
+          match.classList.add('visible');
+          setTimeout(() => {
+            match.classList.remove('visible');
+            setTimeout(() => { resetCards(); busy = false; setTimeout(runStep, T_RESET_GAP); }, 400);
+          }, T_MATCH_SHOW);
+        } else {
+          busy = false;
+        }
+      }, T_SWIPE);
+    });
+
+    skipBtn.addEventListener('click', () => {
+      if (busy || step >= SEQ.length) return;
+      pulseButton(skipBtn);
+      const { card: cIdx } = SEQ[step];
+      cards[cIdx].classList.add('swipe-left');
+      busy = true;
+      setTimeout(() => {
+        if (cards[cIdx + 1]) {
+          cards[cIdx + 1].classList.remove('behind');
+          cards[cIdx + 1].classList.add('entered');
+        }
+        step = Math.min(step + 1, SEQ.length - 1);
+        busy = false;
+        setTimeout(runStep, T_ENTER + 200);
+      }, T_SWIPE);
+    });
+
+    // Kick off auto-sequence after brief delay
+    setTimeout(runStep, LOOP_DELAY + 1200);
+  })();
 
 })();
 </script>
